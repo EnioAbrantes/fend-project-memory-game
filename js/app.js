@@ -29,7 +29,9 @@ function shuffle(array) {
 
 
 //count the number of moves listenner
-$('.card').not('.match').click(function(){
+$('.card').not('.match').click(function(event){
+    //how to add the match class in the card
+    //console.log(event.target.classList.add("match"));
     let value = parseInt($('.moves').text()) + 1;
     $(".moves").text(value);    
 });
