@@ -21,22 +21,17 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-    //count the number of moves
+
     
 
     return array;
 }
-console.log('event 1');
-$('.card').click(function(){
-    console.log('event actived');
-    var value = parseInt($('.moves').text()) + 1;
-    console.log(value);
-    $(".moves").text(value);
-    /* $('').val(function(index){
-        console.log(index);
-        return index +1; 
-    }); */
-    
+
+
+//count the number of moves listenner
+$('.card').not('.match').click(function(){
+    let value = parseInt($('.moves').text()) + 1;
+    $(".moves").text(value);    
 });
 
 /*
