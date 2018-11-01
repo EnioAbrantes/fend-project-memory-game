@@ -21,10 +21,23 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
+    //count the number of moves
+    
 
     return array;
 }
-
+console.log('event 1');
+$('.card').click(function(){
+    console.log('event actived');
+    var value = parseInt($('.moves').text()) + 1;
+    console.log(value);
+    $(".moves").text(value);
+    /* $('').val(function(index){
+        console.log(index);
+        return index +1; 
+    }); */
+    
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
