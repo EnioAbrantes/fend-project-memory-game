@@ -30,35 +30,43 @@ function shuffle(array) {
 function matchPair (){
     console.log($('.open').length)
     if($('.open').length % 2 === 0){
-        console.log($('.open'))
-        console.log('multiple of 2')
-        $('.open').each(function( index, value ) {
-            console.log(value)
-            $('.open').addClass('vibration')
+        var icon = null;
+        $('.open i').each(function( index, value ) {
+            console.log(value.className)
+            if(icon === value.className){
+                $('.open').addClass('match')
+                $('.open').removeClass('open show')
+                countMoves()
+            }else if (icon != null){
+                $('.open').removeClass('open show')
+                countMoves()
+            }
+            icon = value.className
             //$('.open').removeClass('open show')
 
 
           });
     }
 }
-//count the number of moves listenner
-$('.card').not('.match').click(function(event){
-    //how to add the match class in the card
 
-    $(event.target).toggleClass('open show')
-    console.log(event)
-    matchPair();
+function countMoves(){
     let value = parseInt($('.moves').text()) + 1;
-    $(".moves").text(value);    
+    $(".moves").text(value);  
+}
+
+//count the number of moves listenner
+$('.card').click(function(event){
+    //how to add the match class in the card
+    if (!event.target.className.includes('match')){
+        $(event.target).toggleClass('open show')
+    }
+    matchPair();
 });
 
-$('.open show').on('click',(function(event){
-    //how to add the match class in the card
-    console.log(event)
-    $(event.target).removeClass('open show')
-    let value = parseInt($('.moves').text()) + 1;
-    $(".moves").text(value);    
-}));
+$('.restart').click(function(event){
+    $(".moves").text(0);  
+    $('.card').removeClass('open show match')
+});
 
 
 
