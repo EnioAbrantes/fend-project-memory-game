@@ -27,14 +27,40 @@ function shuffle(array) {
     return array;
 }
 
+function matchPair (){
+    console.log($('.open').length)
+    if($('.open').length % 2 === 0){
+        console.log($('.open'))
+        console.log('multiple of 2')
+        $('.open').each(function( index, value ) {
+            console.log(value)
+            $('.open').addClass('vibration')
+            //$('.open').removeClass('open show')
 
+
+          });
+    }
+}
 //count the number of moves listenner
 $('.card').not('.match').click(function(event){
     //how to add the match class in the card
-    //console.log(event.target.classList.add("match"));
+
+    $(event.target).toggleClass('open show')
+    console.log(event)
+    matchPair();
     let value = parseInt($('.moves').text()) + 1;
     $(".moves").text(value);    
 });
+
+$('.open show').on('click',(function(event){
+    //how to add the match class in the card
+    console.log(event)
+    $(event.target).removeClass('open show')
+    let value = parseInt($('.moves').text()) + 1;
+    $(".moves").text(value);    
+}));
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
