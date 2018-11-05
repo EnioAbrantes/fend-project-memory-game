@@ -27,12 +27,11 @@ function shuffle(array) {
     return array;
 }
 
+//compare the icons to see if they are the same icons
 function matchPair (){
-    console.log($('.open').length)
     if($('.open').length % 2 === 0){
         var icon = null;
         $('.open i').each(function( index, value ) {
-            console.log(value.className)
             if(icon === value.className){
                 $('.open').addClass('match')
                 $('.open').removeClass('open show')
@@ -42,30 +41,28 @@ function matchPair (){
                 countMoves()
             }
             icon = value.className
-            //$('.open').removeClass('open show')
-
-
           });
     }
 }
 
+//count the number of moves
 function countMoves(){
     let value = parseInt($('.moves').text()) + 1;
     $(".moves").text(value);  
 }
 
-//count the number of moves listenner
+
 $('.card').click(function(event){
-    //how to add the match class in the card
     if (!event.target.className.includes('match')){
         $(event.target).toggleClass('open show')
     }
     matchPair();
 });
 
+//listenner for restart button
 $('.restart').click(function(event){
     $(".moves").text(0);  
-    $('.card').removeClass('open show match')
+    $('.card').removeClass('open show match');
 });
 
 
