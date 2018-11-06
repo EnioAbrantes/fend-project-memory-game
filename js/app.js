@@ -52,17 +52,24 @@ function countMoves(){
 }
 
 
-$('.card').click(function(event){
-    if (!event.target.className.includes('match')){
-        $(event.target).toggleClass('open show')
+$('.deck').on('click', (function(event){
+    if (event.target.className.includes('card')){
+        if (!event.target.className.includes('match')){
+            $(event.target).toggleClass('open show')
+        }
+        matchPair();
     }
-    matchPair();
-});
+}));
 
 //listenner for restart button
 $('.restart').click(function(event){
     $(".moves").text(0);  
     $('.card').removeClass('open show match');
+    $('.deck').html(shuffle($('.card')));
+});
+
+$(document).ready(function(event){
+    $('.deck').html(shuffle($('.card')));
 });
 
 
