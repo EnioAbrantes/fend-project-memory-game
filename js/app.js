@@ -29,7 +29,7 @@ function shuffle(array) {
 
 //compare the icons to see if they are the same icons
 function matchPair (){
-    if($('.open').length % 2 === 0){
+    if($('.open').length % 2 === 0 && $('.open').length > 0){
         let icons = $('.open i')
         setTimeout(function(){
             if(icons[0].className === icons[1].className){
@@ -45,7 +45,6 @@ function matchPair (){
 function countMoves(){
     let value = parseInt($('.moves').text()) + 1;
     $(".moves").text(value);  
-    console.log("yes")
 }
 
 //count the number of stars according the number of moves
