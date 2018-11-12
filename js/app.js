@@ -30,18 +30,14 @@ function shuffle(array) {
 //compare the icons to see if they are the same icons
 function matchPair (){
     if($('.open').length % 2 === 0){
-        var icon = null;
-        $('.open i').each(function( index, value ) {
-            if(icon === value.className){
+        let icons = $('.open i')
+        setTimeout(function(){
+            if(icons[0].className === icons[1].className){
                 $('.open').addClass('match')
-                $('.open').removeClass('open show')
-                countMoves()
-            }else if (icon != null){
-                $('.open').removeClass('open show')
-                countMoves()
             }
-            icon = value.className
-          });
+            $('.open').removeClass('open show')
+        }, 1000); 
+        countMoves()
     }
 }
 
@@ -49,6 +45,7 @@ function matchPair (){
 function countMoves(){
     let value = parseInt($('.moves').text()) + 1;
     $(".moves").text(value);  
+    console.log("yes")
 }
 
 //count the number of stars according the number of moves
@@ -65,13 +62,15 @@ function countStars(){
 
 
 
-$('.deck').on('click', (function(event){
-    if (event.target.className.includes('card')){
-        if (!event.target.className.includes('match')){
-            $(event.target).toggleClass('open show')
+var test = $('.deck').on('click', (function(event){
+    if($('.open').length < 2){
+        if (event.target.className.includes('card')){
+            if (!event.target.className.includes('match')){         
+                $(event.target).toggleClass('open show')
+            }
+            matchPair();
+            countStars();
         }
-        matchPair();
-        countStars();
     }
 }));
 
