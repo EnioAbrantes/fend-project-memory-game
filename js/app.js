@@ -34,6 +34,7 @@ function matchPair (){
         setTimeout(function(){
             if(icons[0].className === icons[1].className){
                 $('.open').addClass('match')
+                $('.open').addClass('rubberBand')
             }
             $('.open').removeClass('open show')
         }, 1000); 
