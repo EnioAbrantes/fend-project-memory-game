@@ -80,7 +80,8 @@ $('.restart').click(function(event){
     $(".moves").text(0);  
     $('.card').removeClass('open show match');
     //missing the implementation for stars when the restart button is clicked.
-    //$('.fa-star').removeClass('fa-star-o');
+    $('.fa').removeClass('fa-star-o');
+    $('.fa').addClass('fa-star');
     $('.deck').html(shuffle($('.card')));
 });
 
