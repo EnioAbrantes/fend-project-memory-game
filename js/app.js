@@ -22,20 +22,21 @@ function shuffle(array) {
         array[randomIndex] = temporaryValue;
     }
 
-    
-
     return array;
 }
 
 //compare the icons to see if they are the same icons
 function matchPair (){
     if($('.open').length % 2 === 0 && $('.open').length > 0){
-        let icons = $('.open i')
+        let icons = $('.open i');
+        if(icons[0].className === icons[1].className){
+            $('.open').addClass('match')
+            $('.open').addClass('rubberBand')
+        }else{
+            $('.open').addClass('wobble')
+        }
         setTimeout(function(){
-            if(icons[0].className === icons[1].className){
-                $('.open').addClass('match')
-                $('.open').addClass('rubberBand')
-            }
+            $('.card').removeClass('wobble')
             $('.open').removeClass('open show')
         }, 1000); 
         countMoves()
@@ -62,7 +63,7 @@ function countStars(){
 
 
 
-var test = $('.deck').on('click', (function(event){
+$('.deck').on('click', (function(event){
     if($('.open').length < 2){
         if (event.target.className.includes('card')){
             if (!event.target.className.includes('match')){         
@@ -79,7 +80,7 @@ $('.restart').click(function(event){
     $(".moves").text(0);  
     $('.card').removeClass('open show match');
     //missing the implementation for stars when the restart button is clicked.
-    //$('.stars').removeClass('fa-star-o');
+    //$('.fa-star').removeClass('fa-star-o');
     $('.deck').html(shuffle($('.card')));
 });
 
