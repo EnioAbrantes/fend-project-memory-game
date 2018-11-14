@@ -85,9 +85,13 @@ h1 {
     font-size: 33px;
 }
 
-/*
- * Styles for the Score Panel
- */
+
+.modal-content{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
 
 .score-panel {
     text-align: left;
