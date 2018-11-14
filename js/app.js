@@ -52,7 +52,6 @@ function countMoves(){
 //count the number of stars according the number of moves
 function countStars(){
     if(parseInt($('.moves').text()) > 10 && parseInt($('.moves').text()) < 15){
-        //search later for a better approach of these
         $('.fa-star:eq(2)').addClass('fa-star-o')
         $('.fa-star:eq(2)').removeClass('fa-star')
     }else if(parseInt($('.moves').text()) >= 15){
@@ -64,6 +63,8 @@ function countStars(){
 
 
 $('.deck').on('click', (function(event){
+    // 
+    $('.modal').modal('show');
     if($('.open').length < 2 && !$(event.target).hasClass('open')){
         if (event.target.className.includes('card')){
             if (!event.target.className.includes('match')){         
@@ -79,7 +80,6 @@ $('.deck').on('click', (function(event){
 $('.restart').click(function(event){
     $(".moves").text(0);  
     $('.card').removeClass('open show match rubberBand');
-    //missing the implementation for stars when the restart button is clicked.
     $('.fa-star-o').addClass('fa-star');
     $('.fa-star').removeClass('fa-star-o');
     $('.deck').html(shuffle($('.card')));
