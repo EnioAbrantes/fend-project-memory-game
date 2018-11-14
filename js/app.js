@@ -64,7 +64,7 @@ function countStars(){
 
 
 $('.deck').on('click', (function(event){
-    if($('.open').length < 2){
+    if($('.open').length < 2 && !$(event.target).hasClass('open')){
         if (event.target.className.includes('card')){
             if (!event.target.className.includes('match')){         
                 $(event.target).toggleClass('open show')
