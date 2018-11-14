@@ -78,10 +78,10 @@ $('.deck').on('click', (function(event){
 //listenner for restart button
 $('.restart').click(function(event){
     $(".moves").text(0);  
-    $('.card').removeClass('open show match');
+    $('.card').removeClass('open show match rubberBand');
     //missing the implementation for stars when the restart button is clicked.
-    $('.fa').removeClass('fa-star-o');
-    $('.fa').addClass('fa-star');
+    $('.fa-star-o').addClass('fa-star');
+    $('.fa-star').removeClass('fa-star-o');
     $('.deck').html(shuffle($('.card')));
 });
 
