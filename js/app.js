@@ -66,6 +66,10 @@ $('.deck').on('click', (function(event){
     $('.modal').modal('show');
     $('.modal-body').text(`With ${$(".moves").text()} Moves and ${$(".fa-star").length} Stars.\n
                  Woooooo!`)
+    setTimeout(function(){
+        $('.circle-loader').toggleClass('load-complete');
+        $('.checkmark').toggle();
+    }, 1000); 
     if($('.open').length < 2 && !$(event.target).hasClass('open')){
         if (event.target.className.includes('card')){
             if (!event.target.className.includes('match')){         
@@ -78,7 +82,7 @@ $('.deck').on('click', (function(event){
 }));
 
 //listenner for restart button
-$('.restart').click(function(event){
+$('.restart, .btn-info').click(function(event){
     $(".moves").text(0);  
     $('.card').removeClass('open show match rubberBand');
     $('.fa-star-o').addClass('fa-star');
