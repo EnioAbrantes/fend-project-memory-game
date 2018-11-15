@@ -10,7 +10,7 @@
  *   - add each card's HTML to the page
  */
 
- const numberOfCards = 16;
+const numberOfCards = 16;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -43,15 +43,22 @@ function matchPair (){
         }, 1000); 
         countMoves()
     }
+    //Condition to check if the game finished
     if($('.match').length === numberOfCards){
-        $('.modal').modal('show');
-        $('.modal-body').text(`With ${$(".moves").text()} Moves and ${$(".fa-star").length} Stars.\n
-                     Woooooo!`)
-        setTimeout(function(){
-            $('.circle-loader').toggleClass('load-complete');
-            $('.checkmark').toggle();
-        }, 1000); 
+        endOfGame();
     }
+}
+
+//Show the modal with the results.
+function endOfGame(){
+    let stars = $(".fa-star").length === 1? "Star" : "Stars"
+    $('.modal').modal('show');
+    $('.winner-details').html(`With ${$(".moves").text()} Moves and ${$(".fa-star").length} ${stars}.<br/>
+                    Woooooo!`)
+    setTimeout(function(){
+        $('.circle-loader').addClass('load-complete');
+        $('.checkmark').toggle();
+    }, 500); 
 }
 
 //count the number of moves
@@ -91,6 +98,8 @@ $('.restart, .btn-info').click(function(event){
     $('.card').removeClass('open show match rubberBand');
     $('.fa-star-o').addClass('fa-star');
     $('.fa-star').removeClass('fa-star-o');
+    $('.circle-loader').removeClass('load-complete');
+    $('.checkmark').toggle();
     $('.deck').html(shuffle($('.card')));
 });
 
