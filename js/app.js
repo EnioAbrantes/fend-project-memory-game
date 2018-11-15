@@ -29,7 +29,7 @@ function shuffle(array) {
 
 //compare the icons to see if they are the same icons
 function matchPair (){
-    if($('.open').length % 2 === 0 && $('.open').length > 0){
+    if(isTwoCardsOpened()){
         let icons = $('.open i');
         if(icons[0].className === icons[1].className){
             $('.open').addClass('match')
@@ -69,10 +69,10 @@ function countMoves(){
 
 //count the number of stars according the number of moves
 function countStars(){
-    if(parseInt($('.moves').text()) > 10 && parseInt($('.moves').text()) < 15){
+    if(isTwoStars()){
         $('.fa-star:eq(2)').addClass('fa-star-o')
         $('.fa-star:eq(2)').removeClass('fa-star')
-    }else if(parseInt($('.moves').text()) >= 15){
+    }else if(isOneStar()){
         $('.fa-star:eq(1)').addClass('fa-star-o')
         $('.fa-star:eq(1)').removeClass('fa-star')
     }
@@ -108,14 +108,14 @@ $(document).ready(function(event){
 });
 
 
+function isTwoCardsOpened(){
+    return ($('.open').length % 2 === 0 && $('.open').length > 0);
+}
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+function isTwoStars(){
+    return (parseInt($('.moves').text()) > 10 && parseInt($('.moves').text()) < 15);
+}
+
+function isOneStar(){
+    return (parseInt($('.moves').text()) >= 15);
+}
