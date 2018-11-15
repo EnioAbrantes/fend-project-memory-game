@@ -128,6 +128,10 @@ h1 {
   flex-wrap: wrap;
 }
 
+.timer{
+  margin-left: 10%
+}
+
 /* This link:https://codepen.io/CLINNBT/pen/WoVzje helped a lot.*/
 .deck .card.match.rubberBand {
     -webkit-animation-name: rubberBand;

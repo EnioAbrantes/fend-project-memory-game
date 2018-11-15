@@ -11,6 +11,7 @@
  */
 
 const numberOfCards = 16;
+const oneMinuteInSeconds = 59;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -54,7 +55,7 @@ function endOfGame(){
     let stars = $(".fa-star").length === 1? "Star" : "Stars"
     $('.modal').modal('show');
     $('.winner-details').html(`With ${$(".moves").text()} Moves and ${$(".fa-star").length} ${stars}.<br/>
-                    Woooooo!`)
+        Time: ${minutes}:${seconds}   Woooooo!`)
     setTimeout(function(){
         $('.circle-loader').addClass('load-complete');
         $('.checkmark').toggle();
@@ -105,8 +106,30 @@ $('.restart, .btn-info').click(function(event){
 
 $(document).ready(function(event){
     $('.deck').html(shuffle($('.card')));
+    userTimer();
 });
 
+function userTimer() {
+    let timerId = setInterval(function() {
+        increaseSecond();
+    }, 1000);
+  }
+  
+function increaseSecond(){
+    let timer = $('.timer').text().split(":");
+    var minutes = parseInt(timer[0]);
+    var seconds = parseInt(timer[1]);
+    // oneMinuteInSeconds has to be 59 to turn over 1 minute
+    if (seconds === oneMinuteInSeconds){
+        $(".timer").text(`${formatTimer(++minutes)}:00`);  
+    }else{
+        $(".timer").text(`${formatTimer(minutes)}:${formatTimer(++seconds)}`);
+    }
+}
+
+function formatTimer(value){
+    return ('0' + (value)).slice(-2)
+}
 
 function isTwoCardsOpened(){
     return ($('.open').length % 2 === 0 && $('.open').length > 0);
