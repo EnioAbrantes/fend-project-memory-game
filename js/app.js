@@ -10,6 +10,8 @@
  *   - add each card's HTML to the page
  */
 
+ const numberOfCards = 16;
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -41,6 +43,15 @@ function matchPair (){
         }, 1000); 
         countMoves()
     }
+    if($('.match').length === numberOfCards){
+        $('.modal').modal('show');
+        $('.modal-body').text(`With ${$(".moves").text()} Moves and ${$(".fa-star").length} Stars.\n
+                     Woooooo!`)
+        setTimeout(function(){
+            $('.circle-loader').toggleClass('load-complete');
+            $('.checkmark').toggle();
+        }, 1000); 
+    }
 }
 
 //count the number of moves
@@ -63,13 +74,6 @@ function countStars(){
 
 
 $('.deck').on('click', (function(event){
-    $('.modal').modal('show');
-    $('.modal-body').text(`With ${$(".moves").text()} Moves and ${$(".fa-star").length} Stars.\n
-                 Woooooo!`)
-    setTimeout(function(){
-        $('.circle-loader').toggleClass('load-complete');
-        $('.checkmark').toggle();
-    }, 1000); 
     if($('.open').length < 2 && !$(event.target).hasClass('open')){
         if (event.target.className.includes('card')){
             if (!event.target.className.includes('match')){         
