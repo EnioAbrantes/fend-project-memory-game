@@ -7,14 +7,12 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This is the last project of Udacity Web front-end fundaments, inside this project there are some HTML and CSS styles to improve the usability of memory game according the instructions of the project. 
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+To open this project in your browser you only need a double click on index.html inside the project, all the functions of the memory game are in app.js, inside it I used functions like setTimeOut and a lot of jquery functions. 
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository won't accept pull request.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
