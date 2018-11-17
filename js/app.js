@@ -12,6 +12,8 @@
 
 const numberOfCards = 16;
 const oneMinuteInSeconds = 59;
+var minutes;
+var seconds;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -102,6 +104,7 @@ $('.restart, .btn-info').click(function(event){
     $('.circle-loader').removeClass('load-complete');
     $('.checkmark').toggle();
     $('.deck').html(shuffle($('.card')));
+    $(".timer").text(`00:00`);  
 });
 
 $(document).ready(function(event){
@@ -117,8 +120,8 @@ function userTimer() {
   
 function increaseSecond(){
     let timer = $('.timer').text().split(":");
-    var minutes = parseInt(timer[0]);
-    var seconds = parseInt(timer[1]);
+    minutes = parseInt(timer[0]);
+    seconds = parseInt(timer[1]);
     // oneMinuteInSeconds has to be 59 to turn over 1 minute
     if (seconds === oneMinuteInSeconds){
         $(".timer").text(`${formatTimer(++minutes)}:00`);  
