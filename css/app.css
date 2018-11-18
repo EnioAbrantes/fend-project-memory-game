@@ -34,9 +34,44 @@ h1 {
     font-weight: 300;
 }
 
-/*
- * Styles for the deck of cards
- */
+@media only screen and (max-width: 600px ){
+  #mainDeck{
+    width: 528px;
+    min-height: 544px;
+    padding: 26px;
+  }
+
+  #mainDeck .card{
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 500px ){
+  #mainDeck{
+    width: 422px;
+    min-height: 435px;
+    padding: 21px;
+  }
+
+  #mainDeck .card{
+    height: 80px;
+    width: 80px;
+  }
+}
+
+@media only screen and (max-width: 400px ){
+  #mainDeck{
+    width: 304px;
+    min-height: 313px;
+    padding: 18px;
+  }
+
+  #mainDeck .card{
+    height: 58px;
+    width: 58px;
+  }
+}
 
 .deck {
     width: 660px;
@@ -88,7 +123,7 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 300px;
     margin-bottom: 10px;
 }
 
