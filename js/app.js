@@ -57,11 +57,11 @@ function endOfGame(){
     let stars = $(".fa-star").length === 1? "Star" : "Stars"
     $('.modal').modal('show');
     $('.winner-details').html(`With ${$(".moves").text()} Moves and ${$(".fa-star").length} ${stars}.<br/>
-        Time: ${minutes}:${seconds}   Woooooo!`)
+        Time: ${formatTimer(minutes)}:${formatTimer(seconds)}   Woooooo!`)
     setTimeout(function(){
         $('.circle-loader').addClass('load-complete');
         $('.checkmark').toggle();
-    }, 500); 
+    }, 1000); 
 }
 
 //count the number of moves
